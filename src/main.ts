@@ -1,19 +1,27 @@
-import './style.css'
+import "./style.css";
 
-import {createApp} from 'vue'
-import {createRouter, createWebHistory} from 'vue-router'
-import App from './App.vue'
-import Rover from './Rover.vue'
-import Console from './Console.vue'
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
+
+import App from "./App.vue";
+import Rover from "./Rover.vue";
+import Console from "./Console.vue";
+
+import { useRover } from "./useRover.ts";
+
+const { landRover } = useRover();
+
+landRover();
 
 const routes = [
-    {path: '/', component: Rover},
-    {path: '/console', component: Console},
-]
+  { path: "/", redirect: '/rover' },
+  { path: "/rover", component: Rover },
+  { path: "/console", component: Console },
+];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
-})
+  history: createWebHistory(),
+  routes,
+});
 
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).mount("#app");
