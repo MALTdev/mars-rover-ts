@@ -21,8 +21,8 @@ const positionAtterrissage = new Position(new Point(new Entier(5), new Entier(2)
 const rover = ref(new RoverWithState(Orientations.Sud, positionAtterrissage))
 const intepreteurRover = ref(new InterpréteurRover(rover.value))
 
-const interprete = (cmd: string) => {
-    const data = intepreteurRover.value.Interpréter(new CommandeSimple(cmd))
+const executeCommand = (command: string) => {
+    const data = intepreteurRover.value.Interpréter(new CommandeSimple(command))
     rover.value = data._rover
     intepreteurRover.value = data
 }
@@ -32,19 +32,19 @@ onMounted(() => {
         switch (ev.key) {
             case "z":
             case "ArrowUp":
-                interprete("A")
+                executeCommand("A")
                 break;
             case "q":
             case "ArrowLeft":
-                interprete("G")
+                executeCommand("G")
                 break;
             case "s":
             case "ArrowDown":
-                interprete("R")
+                executeCommand("R")
                 break;
             case "d":
             case "ArrowRight":
-                interprete("D")
+                executeCommand("D")
                 break;
             default:
                 break;
