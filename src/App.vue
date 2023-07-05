@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {computed, onMounted, ref} from 'vue'
 
-import {Rover} from './rover/rover'
+import {RoverWithState} from './rover/roverWithState.ts'
 import {Point} from './geometrie/point'
 import {Position} from './geometrie/position'
 import {Entier} from "./math/Entier.ts"
@@ -18,7 +18,7 @@ planeteAvecObstacles.AjouterObstacle(2, 2)
 planeteAvecObstacles.AjouterObstacle(7, 1)
 const positionAtterrissage = new Position(new Point(new Entier(5), new Entier(2)), planeteAvecObstacles)
 
-const rover = ref(new Rover(Orientations.Sud, positionAtterrissage))
+const rover = ref(new RoverWithState(Orientations.Sud, positionAtterrissage))
 const intepreteurRover = ref(new InterpréteurRover(rover.value))
 
 const interprete = (cmd: string) => {
