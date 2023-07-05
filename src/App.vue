@@ -62,12 +62,9 @@ const roverLongitude = computed(() => rover.value.Position._point._longitude._va
 </script>
 
 <template>
-    <div>
-        <button @click="interprete('G')">Gauche</button>
-        <button @click="interprete('A')">Avancer</button>
-        <button @click="interprete('R')">Reculer</button>
-        <button @click="interprete('D')">Droite</button>
-        <table id="planet-table">
+    <div id="game">
+        <h1>Terminal Rover - Opération MALT69775643</h1>
+        <table id="planet">
             <tbody>
             <tr v-for="i in latitudes">
                 <td v-for="j in longitudes">
@@ -85,11 +82,34 @@ const roverLongitude = computed(() => rover.value.Position._point._longitude._va
             </tr>
             </tbody>
         </table>
+        <span id="message">Atterissage : succès le 05 Juillet 2023 à 12h27 heure FR</span>
     </div>
 </template>
 
 <style scoped>
+#game {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#planet td {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #fff;
+    text-align: center;
+/*    padding: 0;*/
+}
+
+
 #robot {
     transform: rotate(v-bind(rover.Orientation.toDegree() + "deg"));
+}
+
+#message {
+    margin-top: 1em;
+    font-style: italic;
 }
 </style>
