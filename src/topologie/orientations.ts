@@ -6,6 +6,7 @@ export interface Orientation {
     FaireAvancer(position : Position) : Position;
     FaireReculer(position : Position) : Position;
     toString(): string;
+    toDegree(): number;
 }
 
 class OrientationNord implements Orientation {
@@ -23,15 +24,19 @@ class OrientationNord implements Orientation {
     }
 
     RotationAntihoraire(): Orientation {
-        return Orientations.Est;
+        return Orientations.Ouest;
     }
 
     RotationHoraire(): Orientation {
-        return Orientations.Ouest;
+        return Orientations.Est;
     }
 
     toString(): string {
         return "Nord";
+    }
+
+    toDegree(): number {
+        return 0;
     }
 }
 
@@ -50,15 +55,19 @@ class OrientationSud implements Orientation {
     }
 
     RotationAntihoraire(): Orientation {
-        return Orientations.Ouest;
+        return Orientations.Est;
     }
 
     RotationHoraire(): Orientation {
-        return Orientations.Est;
+        return Orientations.Ouest;
     }
 
     toString(): string {
         return "Sud";
+    }
+
+    toDegree(): number {
+        return 180;
     }
 }
 
@@ -87,6 +96,10 @@ class OrientationEst implements Orientation {
     toString(): string {
         return "Est";
     }
+
+    toDegree(): number {
+        return 90;
+    }
 }
 
 class OrientationOuest implements Orientation {
@@ -104,15 +117,19 @@ class OrientationOuest implements Orientation {
     }
 
     RotationAntihoraire(): Orientation {
-        return Orientations.Ouest;
+        return Orientations.Sud;
     }
 
     RotationHoraire(): Orientation {
-        return Orientations.Est;
+        return Orientations.Nord;
     }
 
     toString(): string {
         return "Ouest";
+    }
+
+    toDegree(): number {
+        return 270;
     }
 }
 
