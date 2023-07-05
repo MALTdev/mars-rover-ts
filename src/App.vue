@@ -63,7 +63,7 @@ const roverLongitude = computed(() => rover.value.Position._point._longitude._va
 
 <template>
     <div id="game">
-        <h1>Terminal Rover - Opération MALT69775643</h1>
+        <h1>Opération MALT69775643</h1>
         <table id="planet">
             <tbody>
             <tr v-for="i in latitudes">
