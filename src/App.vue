@@ -31,15 +31,19 @@ onMounted(() => {
     document.addEventListener('keydown', (ev: KeyboardEvent) => {
         switch (ev.key) {
             case "z":
+            case "ArrowUp":
                 interprete("A")
                 break;
             case "q":
+            case "ArrowLeft":
                 interprete("G")
                 break;
             case "s":
+            case "ArrowDown":
                 interprete("R")
                 break;
             case "d":
+            case "ArrowRight":
                 interprete("D")
                 break;
             default:
