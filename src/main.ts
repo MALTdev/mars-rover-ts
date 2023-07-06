@@ -5,7 +5,7 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import App from "./App.vue";
 import Rover from "./views/Rover.vue";
-import Control from "./views/Control.vue";
+import MissionControl from "./views/MissionControl.vue";
 
 import { useRover } from "./composables/useRover.ts";
 import { useControl } from "./composables/useControl.ts";
@@ -16,7 +16,7 @@ useControl().initControl();
 const routes = [
   { path: "/", redirect: '/rover' },
   { path: "/rover", component: Rover },
-  { path: "/control", component: Control },
+  { path: "/mission-control", component: MissionControl },
 ];
 
 const router = createRouter({
