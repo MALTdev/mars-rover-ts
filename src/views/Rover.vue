@@ -1,5 +1,40 @@
 <script setup lang="ts">
+import { onMounted, onUnmounted } from "vue";
+import { useRover } from "../composables/useRover.ts";
 import RoverMap from "../components/RoverMap.vue";
+
+const { executeCommand } = useRover();
+
+onMounted(() => {
+  document.addEventListener("keydown", keydownHandler);
+});
+
+onUnmounted(() => {
+  document.removeEventListener("keydown", keydownHandler);
+});
+
+const keydownHandler = (ev: KeyboardEvent) => {
+  switch (ev.key) {
+    case "z":
+    case "ArrowUp":
+      executeCommand("A");
+      break;
+    case "q":
+    case "ArrowLeft":
+      executeCommand("G");
+      break;
+    case "s":
+    case "ArrowDown":
+      executeCommand("R");
+      break;
+    case "d":
+    case "ArrowRight":
+      executeCommand("D");
+      break;
+    default:
+      break;
+  }
+};
 </script>
 
 <template>

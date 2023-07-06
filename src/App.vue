@@ -1,35 +1,3 @@
-<script setup lang="ts">
-import { onMounted } from "vue";
-import { useRover } from "./composables/useRover.ts";
-
-const { executeCommand } = useRover()
-
-onMounted(() => {
-  document.addEventListener("keydown", (ev: KeyboardEvent) => {
-    switch (ev.key) {
-      case "z":
-      case "ArrowUp":
-        executeCommand("A");
-        break;
-      case "q":
-      case "ArrowLeft":
-        executeCommand("G");
-        break;
-      case "s":
-      case "ArrowDown":
-        executeCommand("R");
-        break;
-      case "d":
-      case "ArrowRight":
-        executeCommand("D");
-        break;
-      default:
-        break;
-    }
-  });
-});
-</script>
-
 <template>
   <div id="layout">
     <nav>
