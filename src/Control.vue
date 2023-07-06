@@ -6,7 +6,11 @@ const { emit } = useControl()
 
 const sequence = ref("")
 
-const startEmit = () => {
+const sendCommand = (command: string) => {
+  emit("command", command)
+}
+
+const sendSequence = () => {
   emit("sequence", sequence.value)
   sequence.value = ""
 }
@@ -15,8 +19,20 @@ const startEmit = () => {
 <template>
   <div id="control">
     <h1>Mission Control</h1>
-    <input v-model="sequence" type="text" />
-    <button @click="startEmit">emit</button>
+
+    <p>Commands</p>
+    <div id="commands">
+      <button id="A" @click="sendCommand('A')">A</button>
+      <button id="G" @click="sendCommand('G')">G</button>
+      <button id="R" @click="sendCommand('R')">R</button>
+      <button id="D" @click="sendCommand('D')">D</button>
+    </div>
+
+    <p>Sequence</p>
+    <div>
+      <input v-model="sequence" type="text" placeholder="Enter sequence..." />
+      <button @click="sendSequence">send</button>
+    </div>
   </div>
 </template>
 
@@ -28,7 +44,29 @@ const startEmit = () => {
   align-items: center;
 }
 
-#control button {
-  margin-top: 1em;
+#commands {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  grid-template-areas:
+    ". A ."
+    "G . D"
+    ". R .";
+}
+
+#commands button#A {
+  grid-area: A;
+}
+
+#commands button#G {
+  grid-area: G;
+}
+
+#commands button#D {
+  grid-area: D;
+}
+
+#commands button#R {
+  grid-area: R;
 }
 </style>
