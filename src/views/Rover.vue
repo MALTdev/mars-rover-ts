@@ -1,52 +1,13 @@
 <script setup lang="ts">
-import { computed } from "vue";
-import { useRover } from "../composables/useRover.ts";
-
-const { rover, planet, isObstacle } = useRover();
-
-const latitudes = Array.from(
-  Array(planet.value?._decorated._pointMax._latitude._valeur),
-  (_, index) => index
-)
-  .slice()
-  .reverse();
-
-const longitudes = Array.from(
-  Array(planet.value?._decorated._pointMax._longitude._valeur),
-  (_, index) => index
-);
-
-const roverLatitude = computed(
-  () => rover.value?.Position._point._latitude._valeur
-);
-
-const roverLongitude = computed(
-  () => rover.value?.Position._point._longitude._valeur
-);
+import RoverMap from "../components/RoverMap.vue";
 </script>
 
 <template>
   <div id="game">
     <h1>Opération MALT69775643</h1>
-    <table id="planet">
-      <tbody>
-        <tr v-for="i in latitudes">
-          <td v-for="j in longitudes">
-            <template
-              v-if="rover && i === roverLatitude && j === roverLongitude"
-            >
-              <div id="robot">🤖</div>
-            </template>
-            <template v-else-if="isObstacle(i, j)">
-              <div class="obstacle">🪨</div>
-            </template>
-            <template v-else>
-              <div class="ground">&nbsp;</div>
-            </template>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+
+    <RoverMap :show-all="true" />
+
     <span id="message">
       Atterissage : succès le 05 Juillet 2023 à 12h27 heure FR
     </span>
@@ -59,17 +20,6 @@ const roverLongitude = computed(
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
-
-#planet td {
-  width: 30px;
-  height: 30px;
-  border: 1px solid #fff;
-  text-align: center;
-}
-
-#robot {
-  transform: rotate(v-bind(rover.Orientation.toDegree() + "deg"));
 }
 
 #message {

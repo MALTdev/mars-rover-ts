@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { useControl } from "../composables/useControl.ts";
+import RoverMap from "../components/RoverMap.vue";
 
 const { emit } = useControl()
 
@@ -19,6 +20,8 @@ const sendSequence = () => {
 <template>
   <div id="control">
     <h1>Mission Control</h1>
+
+    <RoverMap :show-all="false" />
 
     <p>Commands</p>
     <div id="commands">
