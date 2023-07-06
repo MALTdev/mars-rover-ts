@@ -5,18 +5,21 @@ import { createRouter, createWebHistory } from "vue-router";
 
 import App from "./App.vue";
 import Rover from "./Rover.vue";
-import Console from "./Console.vue";
+import Control from "./Control.vue";
 
 import { useRover } from "./useRover.ts";
+import { useControl } from "./useControl.ts";
 
 const { landRover } = useRover();
+const { initControl } = useControl();
 
 landRover();
+initControl();
 
 const routes = [
   { path: "/", redirect: '/rover' },
   { path: "/rover", component: Rover },
-  { path: "/console", component: Console },
+  { path: "/control", component: Control },
 ];
 
 const router = createRouter({

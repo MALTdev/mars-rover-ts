@@ -36,8 +36,8 @@ onMounted(() => {
       <router-link to="/">
         <button>Rover</button>
       </router-link>
-      <router-link to="/console">
-        <button>Console</button>
+      <router-link to="/control">
+        <button>Mission Control</button>
       </router-link>
     </nav>
     <router-view></router-view>
