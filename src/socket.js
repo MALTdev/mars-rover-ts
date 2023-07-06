@@ -1,9 +1,6 @@
 import express from "express";
-import { createServer } from "http";
+import { createServer } from "node:http";
 import { Server } from "socket.io";
-import { useRover } from "./useRover";
-
-const { executeCommand, executeSequence } = useRover()
 
 const app = express();
 const httpServer = createServer(app);
@@ -15,10 +12,10 @@ const io = new Server(httpServer, {
 
 io.on("connection", (socket) => {
     socket.on("command", (arg) => {
-        executeCommand(arg)
+        socket.emit("command", arg)
     })
     socket.on("sequence", (arg) => {
-        executeSequence(arg)
+        socket.emit("sequence", arg)
     })
 });
 
