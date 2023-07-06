@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, onMounted } from "vue";
+import { computed } from "vue";
+import { useRover } from "../composables/useRover.ts";
 
-import { useRover } from "./useRover.ts";
-
-const { rover, planet, executeCommand, isObstacle } = useRover();
+const { rover, planet, isObstacle } = useRover();
 
 const latitudes = Array.from(
   Array(planet.value?._decorated._pointMax._latitude._valeur),

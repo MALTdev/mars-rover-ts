@@ -4,17 +4,14 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 
 import App from "./App.vue";
-import Rover from "./Rover.vue";
-import Control from "./Control.vue";
+import Rover from "./views/Rover.vue";
+import Control from "./views/Control.vue";
 
-import { useRover } from "./useRover.ts";
-import { useControl } from "./useControl.ts";
+import { useRover } from "./composables/useRover.ts";
+import { useControl } from "./composables/useControl.ts";
 
-const { landRover } = useRover();
-const { initControl } = useControl();
-
-landRover();
-initControl();
+useRover().landRover();
+useControl().initControl();
 
 const routes = [
   { path: "/", redirect: '/rover' },

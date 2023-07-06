@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
-import { useControl } from "./useControl.ts";
+import { useControl } from "../composables/useControl.ts";
 
 const { emit } = useControl()
 

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { onMounted } from "vue";
-import { useRover } from "./useRover.ts";
+import { useRover } from "./composables/useRover.ts";
 
 const { executeCommand } = useRover()
 

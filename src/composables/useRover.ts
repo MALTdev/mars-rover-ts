@@ -1,15 +1,15 @@
 import { ref } from "vue";
 
-import { Point } from "./geometrie/point";
-import { Position } from "./geometrie/position";
-import { Entier } from "./math/Entier.ts";
-import { Orientations } from "./topologie/orientations";
-import { PlanèteAvecObstacles } from "./topologie/planeteAvecObstacles.ts";
-import { PlanèteToroïdaleVide } from "./topologie/planeteToroïdale.ts";
-import { CommandeComplexe } from "./rover/commande/CommandeComplexe.ts";
-import { CommandeSimple } from "./rover/commande/CommandeSimple.ts";
-import { InterpréteurRover } from "./rover/interpréteurRover.js";
-import { RoverWithState } from "./rover/roverWithState.ts";
+import { Point } from "../classes/geometrie/point";
+import { Position } from "../classes/geometrie/position";
+import { Entier } from "../classes/math/Entier.ts";
+import { Orientations } from "../classes/topologie/orientations";
+import { PlanèteAvecObstacles } from "../classes/topologie/planeteAvecObstacles.ts";
+import { PlanèteToroïdaleVide } from "../classes/topologie/planeteToroïdale.ts";
+import { CommandeComplexe } from "../classes/rover/commande/CommandeComplexe.ts";
+import { CommandeSimple } from "../classes/rover/commande/CommandeSimple.ts";
+import { InterpréteurRover } from "../classes/rover/interpréteurRover.js";
+import { RoverWithState } from "../classes/rover/roverWithState.ts";
 
 const rover = ref<RoverWithState>();
 const planet = ref<PlanèteAvecObstacles>();
