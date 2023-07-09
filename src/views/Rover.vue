@@ -2,8 +2,14 @@
 import { onMounted, onUnmounted } from "vue";
 import { useRover } from "../composables/useRover.ts";
 import RoverMap from "../components/RoverMap.vue";
+import dayjs from "dayjs";
+import "dayjs/locale/fr";
 
 const { executeCommand } = useRover();
+
+dayjs.locale('fr');
+const landingDate = dayjs().format('DD MMMM YYYY')
+const landingHour = dayjs().format('HH:mm')
 
 onMounted(() => {
   document.addEventListener("keydown", keydownHandler);
@@ -44,7 +50,7 @@ const keydownHandler = (ev: KeyboardEvent) => {
     <RoverMap :show-all="true" />
 
     <span id="message">
-      Atterissage : succès le 05 Juillet 2023 à 12h27 heure FR
+      Atterissage : succès le {{ landingDate }} à {{ landingHour }} heure française
     </span>
   </div>
 </template>
