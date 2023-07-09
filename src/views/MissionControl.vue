@@ -23,7 +23,7 @@ const sendSequence = () => {
 
     <RoverMap :show-all="false" />
 
-    <p>Commands</p>
+    <p>Commandes</p>
     <div id="commands">
       <button id="A" @click="sendCommand('A')">A</button>
       <button id="G" @click="sendCommand('G')">G</button>
@@ -31,10 +31,10 @@ const sendSequence = () => {
       <button id="D" @click="sendCommand('D')">D</button>
     </div>
 
-    <p>Sequence</p>
+    <p>Séquence</p>
     <div>
-      <input v-model="sequence" type="text" placeholder="Enter sequence..." />
-      <button @click="sendSequence">send</button>
+      <input v-model="sequence" type="text" placeholder="Entrez une séquence..." />
+      <button @click="sendSequence">valider</button>
     </div>
   </div>
 </template>
