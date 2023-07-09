@@ -2,7 +2,7 @@
 import { computed } from "vue";
 import { useRover } from "../composables/useRover.ts";
 
-const { rover, planet, isObstacle } = useRover();
+const { rover, planet, isObstacle, isFound } = useRover();
 
 withDefaults(
   defineProps<{
@@ -42,7 +42,7 @@ const roverLongitude = computed(
           <template v-if="rover && i === roverLatitude && j === roverLongitude">
             <div id="robot">🤖</div>
           </template>
-          <template v-else-if="showAll && isObstacle(i, j)">
+          <template v-else-if="showAll && isObstacle(i, j) || isFound(i, j)">
             <div class="obstacle">🪨</div>
           </template>
           <template v-else>

@@ -15,13 +15,29 @@ const rover = ref<RoverWithState>();
 const planet = ref<PlanèteAvecObstacles>();
 const interpreter = ref<InterpréteurRover>();
 
+const obstaclesMap = ref<
+  { coords: { latitude: number; longitude: number }; found: boolean }[]
+>([]);
+
 export const useRover = () => {
   const landRover = (): void => {
     const planetSkeleton = new PlanèteToroïdaleVide(new Entier(8));
     planet.value = new PlanèteAvecObstacles(planetSkeleton);
-    planet.value.AjouterObstacle(1, 1);
-    planet.value.AjouterObstacle(2, 2);
-    planet.value.AjouterObstacle(7, 1);
+
+    [
+      [1, 1],
+      [2, 2],
+      [7, 1],
+    ].forEach(([latitude, longitude]) => {
+      planet.value?.AjouterObstacle(latitude, longitude);
+      obstaclesMap.value.push({
+        coords: {
+          latitude,
+          longitude,
+        },
+        found: false,
+      });
+    });
 
     const landingPosition = new Position(
       new Point(new Entier(5), new Entier(2)),
@@ -44,9 +60,23 @@ export const useRover = () => {
     interpreter.value = data;
   };
 
+  const findObstacle = (i: number, j: number): void => {
+    obstaclesMap.value.filter(
+      ({ coords }) => coords.latitude === i && coords.longitude === j
+    )[0].found = true;
+  };
+
   const isObstacle = (i: number, j: number): boolean => {
     return !planet.value?.EstAccessible(
       new Point(new Entier(i), new Entier(j))
+    );
+  };
+
+  const isFound = (i: number, j: number): boolean => {
+    return (
+      obstaclesMap.value.filter(
+        ({ coords }) => coords.latitude === i && coords.longitude === j
+      )[0]?.found || false
     );
   };
 
@@ -55,7 +85,9 @@ export const useRover = () => {
     rover,
     executeCommand,
     executeSequence,
+    findObstacle,
     isObstacle,
+    isFound,
     landRover,
   };
 };

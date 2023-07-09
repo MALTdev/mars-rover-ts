@@ -1,5 +1,6 @@
 import {Planète} from "../topologie/planète.interface.ts";
 import {Point} from "./point.ts";
+import { useRover } from "../../composables/useRover.ts";
 
 export class Position {
     private readonly _point: Point;
@@ -28,7 +29,10 @@ export class Position {
 
     private AllerADestinationSaufObstacle(pointDestination: Point) : Position{
         const pointFinal = this._planète.SelonAccessibilité(pointDestination,
-            () => this._point,
+            () => {
+                useRover().findObstacle(pointDestination._latitude._valeur, pointDestination._longitude._valeur)
+                return this._point
+            },
             () => pointDestination
         );
 
