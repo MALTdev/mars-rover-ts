@@ -2,8 +2,8 @@
 
 Équipe E : Mathieu NEYRET, Anaël BONNAFOUS, Logan LE SAUX, Théo NICOLAS
 
-- [Lancement du projet](lancement-du-projet)
-- [Tâches réalisées](tâches-réalisées)
+- [Lancement du projet](#lancement-du-projet)
+- [Tâches réalisées](#tâches-réalisées)
 - [Schéma d'architecture](#schéma-darchitecture)
 
 ### Lancement du projet
