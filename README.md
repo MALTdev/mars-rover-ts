@@ -5,6 +5,7 @@
 - [Lancement du projet](#lancement-du-projet)
 - [Tâches réalisées](#tâches-réalisées)
 - [Schéma d'architecture](#schéma-darchitecture)
+- [Stack de développement](#stack-de-développement)
 
 ### Lancement du projet
 
