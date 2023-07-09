@@ -10,8 +10,7 @@
     </nav>
     <router-view></router-view>
     <footer>
-      Made with ❤️ and 🤖 by Mathieu NEYRET, Anaël BONNAFOUS, Logan LE SAUX and
-      Théo NICOLAS
+      Made with ❤️ and 🤖 by Mathieu, Anaël, Logan and Théo (MALTdev)
     </footer>
   </div>
 </template>
